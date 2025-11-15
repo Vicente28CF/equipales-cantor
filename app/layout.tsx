@@ -21,10 +21,13 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Equipales Cantor | Muebles Mexicanos Hechos a Mano",
+  title: "Equipales Artesanales | Muebles Mexicanos Hechos a Mano",
   description:
     "Descubre nuestra colección de equipales artesanales. Muebles tradicionales mexicanos hechos a mano con madera y cuero de la más alta calidad.",
   generator: "v0.app",
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export default function RootLayout({
