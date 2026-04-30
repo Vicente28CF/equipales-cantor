@@ -1,5 +1,6 @@
 "use client"
 
+import { type Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useFavorites } from "@/hooks/use-favorites"
@@ -8,6 +9,15 @@ import { Button } from "@/components/ui/button"
 import { Heart, ShoppingCart, X } from "lucide-react"
 import { useCart } from "@/hooks/use-cart"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Mis Favoritos | Equipales Cantor",
+  description:
+    "Guarda tus equipales favoritos favoritos. Explora nuestra colección de equipales artesanales hechos a mano en Zacoalco de Torres, Jalisco.",
+  alternates: {
+    canonical: "/favoritos",
+  },
+}
 
 export default function FavoritosPage() {
   const { favorites, removeFromFavorites } = useFavorites()
