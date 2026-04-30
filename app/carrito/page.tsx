@@ -1,5 +1,6 @@
 "use client"
 
+import { type Metadata } from "next"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { useCart } from "@/hooks/use-cart"
@@ -7,6 +8,15 @@ import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ShoppingCart, Plus, Minus, Trash2, MessageCircle } from "lucide-react"
 import Link from "next/link"
+
+export const metadata: Metadata = {
+  title: "Mi Carrito | Equipales Cantor",
+  description:
+    "Revisa tu carrito de compras de equipales artesanales. Completa tu pedido de muebles mexicanos hechos a mano.",
+  alternates: {
+    canonical: "/carrito",
+  },
+}
 
 export default function CarritoPage() {
   const { cart, removeFromCart, updateQuantity, getTotal, getTotalItems } = useCart()
