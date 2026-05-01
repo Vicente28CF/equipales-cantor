@@ -20,13 +20,71 @@ const spaceGrotesk = Space_Grotesk({
   display: "swap",
 });
 
+const BASE_URL = "https://www.equipalescantor.com";
+
 export const metadata: Metadata = {
-  title: "Equipales Artesanales | Muebles Mexicanos Hechos a Mano",
+  metadataBase: new URL(BASE_URL),
+  title: {
+    default: "Equipales Cantor | Muebles Artesanales Mexicanos desde 1985",
+    template: "%s | Equipales Cantor",
+  },
   description:
-    "Descubre nuestra colección de equipales artesanales. Muebles tradicionales mexicanos hechos a mano con madera y cuero de la más alta calidad.",
-  generator: "v0.app",
-  icons: {
-    icon: "/favicon.ico",
+    "Compra equipales artesanales hechos a mano en Zacoalco de Torres, Jalisco. 4ª generación de artesanos. Envío a toda la República Mexicana. Sala, comedor y sillas desde $850 MXN.",
+  keywords: [
+    "equipales artesanales",
+    "muebles mexicanos",
+    "equipales Jalisco",
+    "Zacoalco de Torres",
+    "muebles artesanales México",
+    "comprar equipales",
+    "equipales Guadalajara",
+    "sillas de madera y cuero",
+    "muebles mexicanos hecha a mano",
+  ],
+  authors: [{ name: "Equipales Cantor" }],
+  creator: "Equipales Cantor",
+  generator: "Next.js",
+  applicationName: "Equipales Cantor",
+  openGraph: {
+    type: "website",
+    locale: "es_MX",
+    url: BASE_URL,
+    siteName: "Equipales Cantor",
+    title: "Equipales Cantor | Muebles Artesanales Mexicanos desde 1985",
+    description:
+      "Compra equipales artesanales hechos a mano en Zacoalco de Torres, Jalisco. 4ª generación de artesanos. Envío a toda la República Mexicana.",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Equipales Artesanales Cantor - Zacoalco de Torres Jalisco",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Equipales Cantor | Muebles Artesanales Mexicanos",
+    description:
+      "Compra equipales artesanales hechos a mano en Zacoalco de Torres, Jalisco. Envío a toda la República.",
+    images: ["/og-image.jpg"],
+  },
+  alternates: {
+    canonical: BASE_URL,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "google-site-verification-code",
   },
 };
 

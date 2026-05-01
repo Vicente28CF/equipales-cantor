@@ -7,21 +7,24 @@ import { useEffect, useRef, useState } from "react"
 import { useFavorites } from "@/hooks/use-favorites"
 import { useCart } from "@/hooks/use-cart"
 import { ImageLightbox } from "@/components/image-lightbox"
+import Link from "next/link"
 
 const promotions = [
   {
     id: "promo-1",
     name: "Comedor Equipal 10 Piezas",
+    slug: "comedor-equipal-10-piezas",
     price: "$38,000",
     image: "/images/promo-comedor-terracota-10pzas.jpeg",
     category: "Promoción",
     description: "10 comedores completos, color a elegir",
-    badge: "No inlcuye Envío",
+    badge: "No incluye Envío",
     details: "Precio NO incluye envío. Elige el color que prefieras para tu comedor.",
   },
   {
     id: "promo-2",
     name: "Equipales Tradicionales Piel Natural",
+    slug: "equipales-tradicionales-piel-natural",
     price: "$600",
     priceUnit: "c/u",
     image: "/images/promo-sillas-natural-pintar.jpeg",
@@ -80,9 +83,10 @@ export function PromotionsSection() {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {promotions.map((promo, index) => (
+            <Link key={promo.id} href={`/promociones/${promo.slug}`}>
             <Card
               key={promo.id}
-              className="promo-card opacity-0 group overflow-hidden border-2 border-primary/20 bg-card hover:border-primary hover:shadow-2xl transition-all duration-500 rounded-3xl"
+              className="promo-card opacity-0 group overflow-hidden border-2 border-primary/20 bg-card hover:border-primary hover:shadow-2xl transition-all duration-500 rounded-3xl cursor-pointer"
               style={{ animationDelay: `${index * 150}ms` }}
               onMouseEnter={() => setHoveredId(promo.id)}
               onMouseLeave={() => setHoveredId(null)}
@@ -173,8 +177,9 @@ export function PromotionsSection() {
                 </div>
                 <p className="text-xs text-muted-foreground border-t border-border pt-3">{promo.details}</p>
               </div>
-            </Card>
-          ))}
+              </Card>
+              </Link>
+            ))}
         </div>
       </div>
 

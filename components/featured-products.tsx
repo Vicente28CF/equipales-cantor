@@ -8,41 +8,17 @@ import Link from "next/link"
 import { useFavorites } from "@/hooks/use-favorites"
 import { useCart } from "@/hooks/use-cart"
 import { ImageLightbox } from "@/components/image-lightbox"
+import { PRODUCTOS } from "@/lib/productos"
 
-const products = [
-  {
-    id: 1,
-    name: "Sala Tulum",
-    price: "$10,000",
-    image: "/images/equipal-set-beige.jpeg",
-    category: "Sets",
-    description: "Incluye mesa de centro",
-  },
-  {
-    id: 2,
-    name: "Sala Tradicional",
-    price: "$7,000",
-    image: "/images/equipal-set-naranja.jpeg",
-    category: "Sets",
-    description: "Incluye mesa de centro",
-  },
-  {
-    id: 3,
-    name: "Comedor Acapulco",
-    price: "$11,000",
-    image: "/images/equipal-comedor-negro.jpeg",
-    category: "Comedores",
-    description: "8 equipales y mesa rectangular",
-  },
-  {
-    id: 4,
-    name: "Equipal Tulum",
-    price: "$1,800",
-    image: "/images/equipal-silla-beige.jpeg",
-    category: "Sillas",
-    description: "Silla individual artesanal",
-  },
-]
+const products = PRODUCTOS.slice(0, 4).map((p) => ({
+  id: p.id,
+  name: p.name,
+  price: p.price,
+  image: p.image,
+  category: p.category,
+  description: p.description,
+  slug: p.slug,
+}))
 
 export function FeaturedProducts() {
   const sectionRef = useRef<HTMLDivElement>(null)
@@ -90,9 +66,10 @@ export function FeaturedProducts() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((product, index) => (
+            <Link key={product.id} href={`/productos/${product.slug}`}>
             <Card
               key={product.id}
-              className="product-card opacity-0 group overflow-hidden border-2 border-border bg-card hover:border-primary/50 hover:shadow-2xl transition-all duration-500 rounded-3xl"
+              className="product-card opacity-0 group overflow-hidden border-2 border-border bg-card hover:border-primary/50 hover:shadow-2xl transition-all duration-500 rounded-3xl cursor-pointer"
               style={{ animationDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredId(product.id)}
               onMouseLeave={() => setHoveredId(null)}
@@ -162,9 +139,10 @@ export function FeaturedProducts() {
                   <span className="text-4xl font-black text-primary">{product.price}</span>
                   <span className="text-sm text-muted-foreground font-bold">MXN</span>
                 </div>
-              </div>
-            </Card>
-          ))}
+</div>
+              </Card>
+              </Link>
+            ))}
         </div>
 
         <div className="text-center mt-20">
