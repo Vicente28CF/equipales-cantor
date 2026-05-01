@@ -25,23 +25,18 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Tienda</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Sillas
+                <Link href="/productos" className="text-background/70 hover:text-background transition-colors">
+                  Equipales
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Mesas
+                <Link href="/productos" className="text-background/70 hover:text-background transition-colors">
+                  Salas
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Juegos
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Personalizados
+                <Link href="/productos" className="text-background/70 hover:text-background transition-colors">
+                  Comedores
                 </Link>
               </li>
             </ul>
@@ -51,23 +46,18 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Información</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
+                <Link href="/nosotros" className="text-background/70 hover:text-background transition-colors">
                   Sobre Nosotros
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Proceso Artesanal
+                <Link href="/productos" className="text-background/70 hover:text-background transition-colors">
+                  Catálogo
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
+                <Link href="/envios" className="text-background/70 hover:text-background transition-colors">
                   Envíos
-                </Link>
-              </li>
-              <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Garantía
                 </Link>
               </li>
             </ul>
@@ -77,22 +67,22 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Legal</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
+                <Link href="/terminos" className="text-background/70 hover:text-background transition-colors">
                   Términos y Condiciones
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
+                <Link href="/privacidad" className="text-background/70 hover:text-background transition-colors">
                   Política de Privacidad
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
-                  Devoluciones
+                <Link href="/productos" className="text-background/70 hover:text-background transition-colors">
+                  Productos
                 </Link>
               </li>
               <li>
-                <Link href="#" className="text-background/70 hover:text-background transition-colors">
+                <Link href="https://wa.me/5213317225092" className="text-background/70 hover:text-background transition-colors" target="_blank" rel="noopener noreferrer">
                   Contacto
                 </Link>
               </li>
