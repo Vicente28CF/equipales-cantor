@@ -1,12 +1,12 @@
 export interface Producto {
-  id: number
-  name: string
-  price: string
-  priceValue: number
-  image: string
-  category: string
-  description: string
-  descriptionLong: string
+  id: number;
+  name: string;
+  price: string;
+  priceValue: number;
+  image: string;
+  category: string;
+  description: string;
+  descriptionLong: string;
 }
 
 function generateSlug(name: string): string {
@@ -17,7 +17,7 @@ function generateSlug(name: string): string {
     .replace(/[^a-z0-9\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-")
-    .replace(/-+/g, "-")
+    .replace(/-+/g, "-");
 }
 
 export const PRODUCTOS: Producto[] = [
@@ -46,8 +46,8 @@ export const PRODUCTOS: Producto[] = [
   {
     id: 3,
     name: "Comedor Acapulco",
-    price: "$11,000",
-    priceValue: 11000,
+    price: "$12,000",
+    priceValue: 12000,
     image: "/images/equipal-comedor-negro.jpeg",
     category: "Comedores",
     description: "8 equipales y mesa rectangular",
@@ -134,8 +134,8 @@ export const PRODUCTOS: Producto[] = [
   {
     id: 11,
     name: "Comedor tradicional",
-    price: "$4,200",
-    priceValue: 4200,
+    price: "$4,500",
+    priceValue: 4500,
     image: "/images/equipal-comedor-cafe-redondo.jpeg",
     category: "Comedores",
     description: "4 equipales y mesa redonda",
@@ -189,8 +189,8 @@ export const PRODUCTOS: Producto[] = [
   {
     id: 16,
     name: "Equipal tradicional",
-    price: "$850",
-    priceValue: 850,
+    price: "$900",
+    priceValue: 900,
     image: "/images/equipal-tradicional-naranja.jpeg",
     category: "Equipales",
     description: "Equipal tradicional en cuero naranja",
@@ -226,23 +226,24 @@ export const PRODUCTOS: Producto[] = [
     priceValue: 1000,
     image: "/images/equipal-personalizado-negro.jpeg",
     category: "Equipales",
-    description: "Equipal con diseño ornamental y personalización, precio por unidad",
+    description:
+      "Equipal con diseño ornamental y personalización, precio por unidad",
     descriptionLong:
       "Equipal tradicional con diseño ornamental. Personalizable con iniciales o logos. Hecho a mano en Zacoalco de Torres. Perfecto para establecimientos comerciales o regalos corporativos.",
   },
-].map((p) => ({ ...p, slug: generateSlug(p.name) }))
+].map((p) => ({ ...p, slug: generateSlug(p.name) }));
 
 export function getProductoBySlug(slug: string): Producto | undefined {
-  return PRODUCTOS.find((p) => p.slug === slug)
+  return PRODUCTOS.find((p) => p.slug === slug);
 }
 
 export function getProductoById(id: number): Producto | undefined {
-  return PRODUCTOS.find((p) => p.id === id)
+  return PRODUCTOS.find((p) => p.id === id);
 }
 
 export function getProductosByCategory(category: string): Producto[] {
-  if (category === "Todos") return PRODUCTOS
-  return PRODUCTOS.filter((p) => p.category === category)
+  if (category === "Todos") return PRODUCTOS;
+  return PRODUCTOS.filter((p) => p.category === category);
 }
 
-export const CATEGORIAS = ["Todos", "Equipales", "Sala", "Comedores"]
+export const CATEGORIAS = ["Todos", "Equipales", "Sala", "Comedores"];

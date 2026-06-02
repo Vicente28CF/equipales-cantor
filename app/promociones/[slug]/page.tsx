@@ -1,76 +1,92 @@
-import { notFound } from "next/navigation"
-import { type Metadata } from "next"
-import Image from "next/image"
-import { Header } from "@/components/header"
-import { Footer } from "@/components/footer"
-import { Button } from "@/components/ui/button"
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
-import { MessageCircle } from "lucide-react"
+import { notFound } from "next/navigation";
+import { type Metadata } from "next";
+import Image from "next/image";
+import { Header } from "@/components/header";
+import { Footer } from "@/components/footer";
+import { Button } from "@/components/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+import { MessageCircle } from "lucide-react";
 
 const promotions = [
   {
     id: "promo-1",
     slug: "comedor-equipal-10-piezas",
     name: "Comedor Equipal 10 Piezas",
-    price: "$38,000",
-    priceValue: 38000,
+    price: "$40,000",
+    priceValue: 40000,
     image: "/images/promo-comedor-terracota-10pzas.jpeg",
     category: "Promoción",
     description: "10 comedores completos, color a elegir",
-    descriptionLong: "Comedor equipal completo con 10 piezas. El set perfecto para tu comedor. Puedes elegir el color que prefieras: naranja, café, negro o beige. Cada pieza está hecha a mano con madera de sabino y cuero genuino de primera calidad. Ideal para familias grandes o espacios comerciales.",
+    descriptionLong:
+      "Comedor equipal completo con 10 piezas. El set perfecto para tu comedor. Puedes elegir el color que prefieras: naranja, café, negro o beige. Cada pieza está hecha a mano con madera de sabino y cuero genuino de primera calidad. Ideal para familias grandes o espacios comerciales.",
     badge: "No incluye Envío",
-    details: "Precio NO incluye envío. Elige el color que prefieras para tu comedor.",
-    whatsappMessage: "Hola! Me interesa: Comedor Equipal 10 Piezas - $38,000. Precio NO incluye envío. Elige el color que prefieras para tu comedor.",
+    details:
+      "Precio NO incluye envío. Elige el color que prefieras para tu comedor.",
+    whatsappMessage:
+      "Hola! Me interesa: Comedor Equipal 10 Piezas - $38,000. Precio NO incluye envío. Elige el color que prefieras para tu comedor.",
   },
   {
     id: "promo-2",
     slug: "equipales-tradicionales-piel-natural",
     name: "Equipales Tradicionales Piel Natural",
-    price: "$600",
-    priceValue: 600,
+    price: "$700",
+    priceValue: 700,
     image: "/images/promo-sillas-natural-pintar.jpeg",
     category: "Promoción",
     description: "Piel natural para pintar a tu gusto",
-    descriptionLong: "Equipales tradicionales en piel natural, listos para que los personalices con el color que desees. Perfectos para proyectos de decoración personalizados o para crear tu propio diseño único. Cada equipal está fabricado a mano con materiales de primera calidad.",
+    descriptionLong:
+      "Equipales tradicionales en piel natural, listos para que los personalices con el color que desees. Perfectos para proyectos de decoración personalizados o para crear tu propio diseño único. Cada equipal está fabricado a mano con materiales de primera calidad.",
     badge: "Personalizable",
-    details: "Equipales en piel natural sin pintar. Personalízalos con el color que desees.",
-    whatsappMessage: "Hola! Me interesa: Equipales Tradicionales Piel Natural - $600 c/u. Equipales en piel natural sin pintar.",
+    details:
+      "Equipales en piel natural sin pintar. Personalízalos con el color que desees.",
+    whatsappMessage:
+      "Hola! Me interesa: Equipales Tradicionales Piel Natural - $600 c/u. Equipales en piel natural sin pintar.",
   },
-]
+];
 
 export function generateStaticParams() {
   return promotions.map((promo) => ({
     slug: promo.slug,
-  }))
+  }));
 }
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
-  const { slug } = await params
-  const promo = promotions.find((p) => p.slug === slug)
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const promo = promotions.find((p) => p.slug === slug);
 
   if (!promo) {
-    return { title: "Promoción no encontrada" }
+    return { title: "Promoción no encontrada" };
   }
 
   return {
     title: `${promo.name} - Equipales Cantor`,
     description: promo.description,
-  }
+  };
 }
 
 interface PromoPageProps {
-  params: Promise<{ slug: string }>
+  params: Promise<{ slug: string }>;
 }
 
 export default async function PromoPage({ params }: PromoPageProps) {
-  const { slug } = await params
-  const promo = promotions.find((p) => p.slug === slug)
+  const { slug } = await params;
+  const promo = promotions.find((p) => p.slug === slug);
 
   if (!promo) {
-    notFound()
+    notFound();
   }
 
-  const whatsappUrl = `https://wa.me/523317225092?text=${encodeURIComponent(promo.whatsappMessage)}`
+  const whatsappUrl = `https://wa.me/523317225092?text=${encodeURIComponent(promo.whatsappMessage)}`;
 
   return (
     <main className="min-h-screen pt-20">
@@ -88,14 +104,22 @@ export default async function PromoPage({ params }: PromoPageProps) {
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbLink href={`/promociones/${slug}`}>{promo.name}</BreadcrumbLink>
+              <BreadcrumbLink href={`/promociones/${slug}`}>
+                {promo.name}
+              </BreadcrumbLink>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
 
         <div className="grid lg:grid-cols-2 gap-12">
           <div className="relative aspect-[4/3] rounded-3xl overflow-hidden bg-muted">
-            <Image src={promo.image} alt={promo.name} fill className="object-contain p-8" priority />
+            <Image
+              src={promo.image}
+              alt={promo.name}
+              fill
+              className="object-contain p-8"
+              priority
+            />
           </div>
 
           <div>
@@ -108,11 +132,17 @@ export default async function PromoPage({ params }: PromoPageProps) {
               </span>
             </div>
 
-            <h1 className="text-3xl lg:text-4xl font-black mb-4">{promo.name}</h1>
-            <p className="text-lg text-muted-foreground mb-6">{promo.description}</p>
+            <h1 className="text-3xl lg:text-4xl font-black mb-4">
+              {promo.name}
+            </h1>
+            <p className="text-lg text-muted-foreground mb-6">
+              {promo.description}
+            </p>
 
             <div className="flex items-baseline mb-8">
-              <span className="text-4xl lg:text-5xl font-black text-primary">{promo.price}</span>
+              <span className="text-4xl lg:text-5xl font-black text-primary">
+                {promo.price}
+              </span>
               <span className="text-lg text-muted-foreground ml-2">MXN</span>
             </div>
 
@@ -139,5 +169,5 @@ export default async function PromoPage({ params }: PromoPageProps) {
 
       <Footer />
     </main>
-  )
+  );
 }
